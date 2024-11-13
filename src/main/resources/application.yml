@@ -15,6 +15,15 @@ spring:
       settings:
         web-allow-others: false
 
+  jpa:
+    hibernate:
+      ddl-auto: none  # Since we're using Liquibase for schema management
+    show-sql: true    # Useful for development
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: false
+
   liquibase:
     change-log: classpath:db/db.changelog-master.yaml
     enabled: true
