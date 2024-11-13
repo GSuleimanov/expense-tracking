@@ -2,14 +2,12 @@ spring:
   application:
     name: expenses
 
-  # Database Configuration
   datasource:
     url: jdbc:h2:mem:expensesdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
     username: sa
     password:
     driver-class-name: org.h2.Driver
 
-  # H2 Console Configuration
   h2:
     console:
       enabled: true
@@ -17,15 +15,6 @@ spring:
       settings:
         web-allow-others: false
 
-  # Liquibase Configuration
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.yaml
     enabled: true
-
-  # JPA Configuration (if you decide to use JPA later)
-  jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
-    show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
