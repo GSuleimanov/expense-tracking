@@ -1,5 +1,0 @@
-databaseChangeLog:
-  - include:
-      file: db/changelog/changes/v0.0.1-initial-schema.sql
-  - include:
-      file: db/changelog/changes/v0.0.2-add-location.sql

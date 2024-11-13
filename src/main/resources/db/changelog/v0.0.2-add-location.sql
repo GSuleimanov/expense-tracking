@@ -8,4 +8,4 @@ ALTER TABLE expenses ADD COLUMN location VARCHAR(255);
 --changeset gsuleimanov:9
 -- Add index for location searches
 CREATE INDEX idx_expenses_location ON expenses(location);
---rollback DROP INDEX idx_expenses_location; 
+--rollback DROP INDEX idx_expenses_location;
