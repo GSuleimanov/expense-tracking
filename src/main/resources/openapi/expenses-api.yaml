@@ -21,6 +21,7 @@ tags:
 paths:
   /expenses:
     get:
+      operationId: listExpenses
       tags:
         - expenses
       summary: List expenses
@@ -57,6 +58,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/PagedExpenses'
     post:
+      operationId: createExpense
       tags:
         - expenses
       summary: Create new expense
@@ -83,6 +85,7 @@ paths:
           type: integer
           format: int64
     get:
+      operationId: getExpenseById
       tags:
         - expenses
       summary: Get expense by ID
@@ -94,6 +97,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Expense'
     put:
+      operationId: updateExpense
       tags:
         - expenses
       summary: Update expense
@@ -111,6 +115,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Expense'
     delete:
+      operationId: deleteExpense
       tags:
         - expenses
       summary: Delete expense
@@ -120,6 +125,7 @@ paths:
 
   /categories:
     get:
+      operationId: listCategories
       tags:
         - categories
       summary: List categories
@@ -133,6 +139,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/Category'
     post:
+      operationId: createCategory
       tags:
         - categories
       summary: Create category
@@ -152,6 +159,7 @@ paths:
 
   /payment-methods:
     get:
+      operationId: listPaymentMethods
       tags:
         - payment-methods
       summary: List payment methods
@@ -165,6 +173,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/PaymentMethod'
     post:
+      operationId: createPaymentMethod
       tags:
         - payment-methods
       summary: Create payment method
@@ -184,6 +193,7 @@ paths:
 
   /users/register:
     post:
+      operationId: registerUser
       tags:
         - users
       summary: Register new user
