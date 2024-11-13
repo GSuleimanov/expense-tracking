@@ -3,7 +3,7 @@ info:
   title: Expenses API
   description: API for expense tracking and management system
   version: 0.0.1
-  
+
 servers:
   - url: http://localhost:8080/api/v1
     description: Local development server
@@ -367,12 +367,3 @@ components:
           format: password
           minLength: 8
           maxLength: 255
-
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
-
-security:
-  - bearerAuth: [] 
