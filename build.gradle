@@ -69,3 +69,20 @@ openApiGenerate {
 }
 
 tasks.openApiGenerate.dependsOn tasks.openApiValidate
+
+// Add source set for generated sources
+sourceSets {
+	main {
+		java {
+			srcDir "${buildDir}/generated/src/main/java"
+		}
+	}
+}
+
+// Make sure generated sources are compiled
+tasks.compileJava.dependsOn tasks.openApiGenerate
+
+// Clean generated sources when running clean task
+clean {
+	delete "${buildDir}/generated"
+}
