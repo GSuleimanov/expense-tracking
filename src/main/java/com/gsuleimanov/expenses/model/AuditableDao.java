@@ -1,4 +1,4 @@
-package com.gsuleimanov.expenses.entity;
+package com.gsuleimanov.expenses.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;

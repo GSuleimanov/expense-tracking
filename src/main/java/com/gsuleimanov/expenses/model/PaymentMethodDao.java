@@ -1,4 +1,4 @@
-package com.gsuleimanov.expenses.entity;
+package com.gsuleimanov.expenses.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -13,8 +13,8 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "categories")
-public class CategoryDao extends AuditableDao {
+@Table(name = "payment_methods")
+public class PaymentMethodDao extends AuditableDao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,17 +22,14 @@ public class CategoryDao extends AuditableDao {
     @Column(length = 50, nullable = false)
     private String name;
 
-    @Column(length = 255)
-    private String description;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private UserDao user;
 
-    @OneToMany(mappedBy = "category")
+    @OneToMany(mappedBy = "paymentMethod")
     private Set<ExpenseDao> expenses;
 
-    public static CategoryDao reference(Long id) {
-        return CategoryDao.builder().id(id).build();
+    public static PaymentMethodDao reference(Long id) {
+        return PaymentMethodDao.builder().id(id).build();
     }
 }
