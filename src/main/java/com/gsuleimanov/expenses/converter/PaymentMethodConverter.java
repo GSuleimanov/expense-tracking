@@ -1,6 +1,6 @@
 package com.gsuleimanov.expenses.converter;
 
-import com.gsuleimanov.expenses.entity.PaymentMethodDao;
+import com.gsuleimanov.expenses.model.PaymentMethodDao;
 import com.gsuleimanov.expenses.model.PaymentMethod;
 import com.gsuleimanov.expenses.model.PaymentMethodRequest;
 import org.springframework.stereotype.Component;

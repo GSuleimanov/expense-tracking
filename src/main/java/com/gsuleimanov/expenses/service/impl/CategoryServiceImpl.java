@@ -1,7 +1,7 @@
 package com.gsuleimanov.expenses.service.impl;
 
 import com.gsuleimanov.expenses.converter.CategoryConverter;
-import com.gsuleimanov.expenses.entity.CategoryDao;
+import com.gsuleimanov.expenses.model.CategoryDao;
 import com.gsuleimanov.expenses.model.Category;
 import com.gsuleimanov.expenses.model.CategoryRequest;
 import com.gsuleimanov.expenses.repository.CategoryRepository;

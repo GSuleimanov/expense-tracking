@@ -1,6 +1,6 @@
 package com.gsuleimanov.expenses.repository;
 
-import com.gsuleimanov.expenses.entity.ExpenseDao;
+import com.gsuleimanov.expenses.model.ExpenseDao;
 
 import java.time.LocalDate;
 

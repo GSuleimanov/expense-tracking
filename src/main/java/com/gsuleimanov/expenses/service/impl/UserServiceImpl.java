@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.gsuleimanov.expenses.converter.UserConverter;
-import com.gsuleimanov.expenses.entity.UserDao;
+import com.gsuleimanov.expenses.model.UserDao;
 import com.gsuleimanov.expenses.exception.UserAlreadyExistsException;
 import com.gsuleimanov.expenses.model.User;
 import com.gsuleimanov.expenses.model.UserRegistrationRequest;

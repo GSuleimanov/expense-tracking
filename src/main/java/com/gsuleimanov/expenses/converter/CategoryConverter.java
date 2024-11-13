@@ -1,6 +1,6 @@
 package com.gsuleimanov.expenses.converter;
 
-import com.gsuleimanov.expenses.entity.CategoryDao;
+import com.gsuleimanov.expenses.model.CategoryDao;
 import com.gsuleimanov.expenses.model.Category;
 import com.gsuleimanov.expenses.model.CategoryRequest;
 import org.springframework.stereotype.Component;

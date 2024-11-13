@@ -1,8 +1,8 @@
 package com.gsuleimanov.expenses.converter;
 
-import com.gsuleimanov.expenses.entity.CategoryDao;
-import com.gsuleimanov.expenses.entity.ExpenseDao;
-import com.gsuleimanov.expenses.entity.PaymentMethodDao;
+import com.gsuleimanov.expenses.model.CategoryDao;
+import com.gsuleimanov.expenses.model.ExpenseDao;
+import com.gsuleimanov.expenses.model.PaymentMethodDao;
 import com.gsuleimanov.expenses.model.Expense;
 import com.gsuleimanov.expenses.model.ExpenseRequest;
 import lombok.RequiredArgsConstructor;

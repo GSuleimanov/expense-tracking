@@ -1,6 +1,6 @@
 package com.gsuleimanov.expenses.converter;
 
-import com.gsuleimanov.expenses.entity.UserDao;
+import com.gsuleimanov.expenses.model.UserDao;
 import com.gsuleimanov.expenses.model.User;
 import org.springframework.stereotype.Component;
 

@@ -1,7 +1,7 @@
 package com.gsuleimanov.expenses.service.impl;
 
 import com.gsuleimanov.expenses.converter.ExpenseConverter;
-import com.gsuleimanov.expenses.entity.ExpenseDao;
+import com.gsuleimanov.expenses.model.ExpenseDao;
 import com.gsuleimanov.expenses.exception.ResourceNotFoundException;
 import com.gsuleimanov.expenses.model.Expense;
 import com.gsuleimanov.expenses.model.ExpenseRequest;

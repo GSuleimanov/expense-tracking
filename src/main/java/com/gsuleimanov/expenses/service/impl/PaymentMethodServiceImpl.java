@@ -1,7 +1,7 @@
 package com.gsuleimanov.expenses.service.impl;
 
 import com.gsuleimanov.expenses.converter.PaymentMethodConverter;
-import com.gsuleimanov.expenses.entity.PaymentMethodDao;
+import com.gsuleimanov.expenses.model.PaymentMethodDao;
 import com.gsuleimanov.expenses.model.PaymentMethod;
 import com.gsuleimanov.expenses.model.PaymentMethodRequest;
 import com.gsuleimanov.expenses.repository.PaymentMethodRepository;
