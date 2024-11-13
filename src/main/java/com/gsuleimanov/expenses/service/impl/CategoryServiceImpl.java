@@ -25,9 +25,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     @Transactional(readOnly = true)
     public List<Category> findAllCategories() {
-        // TODO: Implement user-specific categories when authentication is added
-        var categories = categoryRepository.findAll();
-        return categories.stream()
+        return categoryRepository.findAll().stream()
                 .map(categoryConverter::toDto)
                 .collect(Collectors.toList());
     }
@@ -35,14 +33,9 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     @Transactional
     public Category createCategory(CategoryRequest categoryRequest) {
-        // TODO: Replace with actual authenticated user when security is implemented
-        var user = userRepository.findById(1L)
-                .orElseThrow(() -> new RuntimeException("Default user not found"));
-
         var category = CategoryDao.builder()
                 .name(categoryRequest.getName())
                 .description(categoryRequest.getDescription())
-                .user(user)
                 .build();
 
         var savedCategory = categoryRepository.save(category);

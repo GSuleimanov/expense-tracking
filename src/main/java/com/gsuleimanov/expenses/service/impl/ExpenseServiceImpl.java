@@ -33,16 +33,12 @@ public class ExpenseServiceImpl implements ExpenseService {
         var pageRequest = PageRequest.of(page, size);
         Page<ExpenseDao> expenses;
 
-        if (startDate != null && endDate != null) {
-            expenses = expenseRepository.findByExpenseDateBetween(startDate, endDate, pageRequest);
-        } else {
-            expenses = expenseRepository.findAll(pageRequest);
-        }
+        expenses = startDate != null && endDate != null
+                ? expenseRepository.findByExpenseDateBetween(startDate, endDate, pageRequest)
+                : expenseRepository.findAll(pageRequest);
 
         var pagedExpenses = new PagedExpenses();
-        pagedExpenses.setContent(expenses.map(expense ->
-            expenseConverter.toDto(expense, expense.getCategory(), expense.getPaymentMethod())
-        ).getContent());
+        pagedExpenses.setContent(expenses.map(expenseConverter::toDto).getContent());
         pagedExpenses.setTotalElements(expenses.getTotalElements());
         pagedExpenses.setTotalPages(expenses.getTotalPages());
         pagedExpenses.setSize(expenses.getSize());
@@ -54,15 +50,14 @@ public class ExpenseServiceImpl implements ExpenseService {
     @Override
     @Transactional(readOnly = true)
     public Expense findExpenseById(Long id) {
-        var expense = expenseRepository.findById(id)
+        return expenseRepository.findById(id)
+            .map(expenseConverter::toDto)
             .orElseThrow(() -> new ResourceNotFoundException("Expense not found: " + id));
-        return expenseConverter.toDto(expense, expense.getCategory(), expense.getPaymentMethod());
     }
 
     @Override
     @Transactional
     public Expense createExpense(ExpenseRequest request) {
-        // TODO: Replace with actual authenticated user when security is implemented
         var user = userRepository.findById(1L)
             .orElseThrow(() -> new RuntimeException("Default user not found"));
 
@@ -83,7 +78,7 @@ public class ExpenseServiceImpl implements ExpenseService {
             .build();
 
         var savedExpense = expenseRepository.save(expense);
-        return expenseConverter.toDto(savedExpense, category, paymentMethod);
+        return expenseConverter.toDto(savedExpense);
     }
 
     @Override
@@ -110,7 +105,7 @@ public class ExpenseServiceImpl implements ExpenseService {
             .build();
 
         var savedExpense = expenseRepository.save(updatedExpense);
-        return expenseConverter.toDto(savedExpense, category, paymentMethod);
+        return expenseConverter.toDto(savedExpense);
     }
 
     @Override

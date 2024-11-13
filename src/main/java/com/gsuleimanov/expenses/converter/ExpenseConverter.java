@@ -14,9 +14,7 @@ public class ExpenseConverter {
     private final PaymentMethodConverter paymentMethodConverter;
     private final CategoryConverter categoryConverter;
 
-    public Expense toDto(ExpenseDao expense,
-                        CategoryDao category,
-                        PaymentMethodDao paymentMethod) {
+    public Expense toDto(ExpenseDao expense) {
         if (expense == null) return null;
 
         return new Expense()
@@ -25,8 +23,8 @@ public class ExpenseConverter {
                 .description(expense.getDescription())
                 .expenseDate(expense.getExpenseDate())
                 .location(expense.getLocation())
-                .category(categoryConverter.toDto(category))
-                .paymentMethod(paymentMethodConverter.toDto(paymentMethod))
+                .category(categoryConverter.toDto(expense.getCategory()))
+                .paymentMethod(paymentMethodConverter.toDto(expense.getPaymentMethod()))
                 .createdAt(expense.getCreatedAt())
                 .updatedAt(expense.getUpdatedAt());
     }
