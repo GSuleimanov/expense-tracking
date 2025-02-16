@@ -1,7 +1,7 @@
 package com.gsuleimanov.expenses.service.impl;
 
 import com.gsuleimanov.expenses.converter.CategoryConverter;
-import com.gsuleimanov.expenses.model.CategoryDao;
+import com.gsuleimanov.expenses.model.CategoryEntity;
 import com.gsuleimanov.expenses.model.Category;
 import com.gsuleimanov.expenses.model.CategoryRequest;
 import com.gsuleimanov.expenses.repository.CategoryRepository;
@@ -33,7 +33,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     @Transactional
     public Category createCategory(CategoryRequest categoryRequest) {
-        var category = CategoryDao.builder()
+        var category = CategoryEntity.builder()
                 .name(categoryRequest.getName())
                 .description(categoryRequest.getDescription())
                 .build();

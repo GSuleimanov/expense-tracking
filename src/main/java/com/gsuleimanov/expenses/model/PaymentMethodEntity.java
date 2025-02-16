@@ -13,8 +13,8 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "categories")
-public class CategoryDao extends AuditableDao {
+@Table(name = "payment_methods")
+public class PaymentMethodEntity extends AuditableEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,17 +22,14 @@ public class CategoryDao extends AuditableDao {
     @Column(length = 50, nullable = false)
     private String name;
 
-    @Column(length = 255)
-    private String description;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private UserDao user;
+    private UserEntity user;
 
-    @OneToMany(mappedBy = "category")
-    private Set<ExpenseDao> expenses;
+    @OneToMany(mappedBy = "paymentMethod")
+    private Set<ExpenseEntity> expenses;
 
-    public static CategoryDao reference(Long id) {
-        return CategoryDao.builder().id(id).build();
+    public static PaymentMethodEntity reference(Long id) {
+        return PaymentMethodEntity.builder().id(id).build();
     }
 }

@@ -14,22 +14,22 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Entity
 @Table(name = "expenses")
-public class ExpenseDao extends AuditableDao {
+public class ExpenseEntity extends AuditableEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
-    private UserDao user;
+    private UserEntity user;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
-    private CategoryDao category;
+    private CategoryEntity category;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "payment_method_id")
-    private PaymentMethodDao paymentMethod;
+    private PaymentMethodEntity paymentMethod;
 
     @Column(name = "category_id", insertable = false, updatable = false)
     private Long categoryId;

@@ -1,6 +1,6 @@
 package com.gsuleimanov.expenses.converter;
 
-import com.gsuleimanov.expenses.model.CategoryDao;
+import com.gsuleimanov.expenses.model.CategoryEntity;
 import com.gsuleimanov.expenses.model.Category;
 import com.gsuleimanov.expenses.model.CategoryRequest;
 import org.springframework.stereotype.Component;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class CategoryConverter {
 
-    public Category toDto(CategoryDao record) {
+    public Category toDto(CategoryEntity record) {
         if (record == null) return null;
 
         return new Category()
@@ -18,10 +18,10 @@ public class CategoryConverter {
                 .createdAt(record.getCreatedAt());
     }
 
-    public CategoryDao toRecord(CategoryRequest request) {
+    public CategoryEntity toRecord(CategoryRequest request) {
         if (request == null) return null;
 
-        return CategoryDao.builder()
+        return CategoryEntity.builder()
                 .name(request.getName())
                 .description(request.getDescription())
                 .build();

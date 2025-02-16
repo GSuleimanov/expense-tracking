@@ -1,13 +1,13 @@
 package com.gsuleimanov.expenses.converter;
 
-import com.gsuleimanov.expenses.model.UserDao;
+import com.gsuleimanov.expenses.model.UserEntity;
 import com.gsuleimanov.expenses.model.User;
 import org.springframework.stereotype.Component;
 
 @Component
 public class UserConverter {
 
-    public User toDto(UserDao record) {
+    public User toDto(UserEntity record) {
         if (record == null) return null;
 
         return new User()

@@ -1,7 +1,7 @@
 package com.gsuleimanov.expenses.service.impl;
 
 import com.gsuleimanov.expenses.converter.ExpenseConverter;
-import com.gsuleimanov.expenses.model.ExpenseDao;
+import com.gsuleimanov.expenses.model.ExpenseEntity;
 import com.gsuleimanov.expenses.exception.ResourceNotFoundException;
 import com.gsuleimanov.expenses.model.Expense;
 import com.gsuleimanov.expenses.model.ExpenseRequest;
@@ -31,7 +31,7 @@ public class ExpenseServiceImpl implements ExpenseService {
     @Transactional(readOnly = true)
     public PagedExpenses findExpenses(LocalDate startDate, LocalDate endDate, String category, Integer page, Integer size) {
         var pageRequest = PageRequest.of(page, size);
-        Page<ExpenseDao> expenses;
+        Page<ExpenseEntity> expenses;
 
         expenses = startDate != null && endDate != null
                 ? expenseRepository.findByExpenseDateBetween(startDate, endDate, pageRequest)
@@ -67,7 +67,7 @@ public class ExpenseServiceImpl implements ExpenseService {
         var paymentMethod = paymentMethodRepository.findById(request.getPaymentMethodId())
             .orElseThrow(() -> new ResourceNotFoundException("Payment method not found: " + request.getPaymentMethodId()));
 
-        var expense = ExpenseDao.builder()
+        var expense = ExpenseEntity.builder()
             .user(user)
             .category(category)
             .paymentMethod(paymentMethod)
@@ -93,7 +93,7 @@ public class ExpenseServiceImpl implements ExpenseService {
         var paymentMethod = paymentMethodRepository.findById(request.getPaymentMethodId())
             .orElseThrow(() -> new ResourceNotFoundException("Payment method not found: " + request.getPaymentMethodId()));
 
-        var updatedExpense = ExpenseDao.builder()
+        var updatedExpense = ExpenseEntity.builder()
             .id(existingExpense.getId())
             .user(existingExpense.getUser())
             .category(category)

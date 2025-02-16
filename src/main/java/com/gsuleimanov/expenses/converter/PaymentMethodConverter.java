@@ -1,6 +1,6 @@
 package com.gsuleimanov.expenses.converter;
 
-import com.gsuleimanov.expenses.model.PaymentMethodDao;
+import com.gsuleimanov.expenses.model.PaymentMethodEntity;
 import com.gsuleimanov.expenses.model.PaymentMethod;
 import com.gsuleimanov.expenses.model.PaymentMethodRequest;
 import org.springframework.stereotype.Component;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class PaymentMethodConverter {
 
-    public PaymentMethod toDto(PaymentMethodDao record) {
+    public PaymentMethod toDto(PaymentMethodEntity record) {
         return record == null
                 ? null
                 : new PaymentMethod()
@@ -17,10 +17,10 @@ public class PaymentMethodConverter {
                         .createdAt(record.getCreatedAt());
     }
 
-    public PaymentMethodDao toRecord(PaymentMethodRequest request) {
+    public PaymentMethodEntity toRecord(PaymentMethodRequest request) {
         if (request == null) return null;
 
-        return PaymentMethodDao.builder()
+        return PaymentMethodEntity.builder()
                 .name(request.getName())
                 .build();
     }

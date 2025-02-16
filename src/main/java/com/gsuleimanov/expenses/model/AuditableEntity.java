@@ -6,7 +6,7 @@ import java.time.OffsetDateTime;
 
 @MappedSuperclass
 @Getter
-public abstract class AuditableDao {
+public abstract class AuditableEntity {
     @Column(name = "created_at")
     private OffsetDateTime createdAt;
 

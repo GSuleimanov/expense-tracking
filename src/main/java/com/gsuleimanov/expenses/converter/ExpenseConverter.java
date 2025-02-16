@@ -1,8 +1,8 @@
 package com.gsuleimanov.expenses.converter;
 
-import com.gsuleimanov.expenses.model.CategoryDao;
-import com.gsuleimanov.expenses.model.ExpenseDao;
-import com.gsuleimanov.expenses.model.PaymentMethodDao;
+import com.gsuleimanov.expenses.model.CategoryEntity;
+import com.gsuleimanov.expenses.model.ExpenseEntity;
+import com.gsuleimanov.expenses.model.PaymentMethodEntity;
 import com.gsuleimanov.expenses.model.Expense;
 import com.gsuleimanov.expenses.model.ExpenseRequest;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +14,7 @@ public class ExpenseConverter {
     private final PaymentMethodConverter paymentMethodConverter;
     private final CategoryConverter categoryConverter;
 
-    public Expense toDto(ExpenseDao expense) {
+    public Expense toDto(ExpenseEntity expense) {
         if (expense == null) return null;
 
         return new Expense()
@@ -29,16 +29,16 @@ public class ExpenseConverter {
                 .updatedAt(expense.getUpdatedAt());
     }
 
-    public ExpenseDao toRecord(ExpenseRequest request) {
+    public ExpenseEntity toRecord(ExpenseRequest request) {
         if (request == null) return null;
 
-        return ExpenseDao.builder()
+        return ExpenseEntity.builder()
                 .amount(request.getAmount())
                 .description(request.getDescription())
                 .expenseDate(request.getExpenseDate())
                 .location(request.getLocation())
-                .category(CategoryDao.reference(request.getCategoryId()))
-                .paymentMethod(PaymentMethodDao.reference(request.getPaymentMethodId()))
+                .category(CategoryEntity.reference(request.getCategoryId()))
+                .paymentMethod(PaymentMethodEntity.reference(request.getPaymentMethodId()))
                 .build();
     }
 }

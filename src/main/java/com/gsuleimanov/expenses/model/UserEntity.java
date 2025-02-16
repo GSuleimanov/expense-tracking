@@ -13,7 +13,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Entity
 @Table(name = "users")
-public class UserDao extends AuditableDao {
+public class UserEntity extends AuditableEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,11 +28,11 @@ public class UserDao extends AuditableDao {
     private String passwordHash;
 
     @OneToMany(mappedBy = "user")
-    private Set<CategoryDao> categories;
+    private Set<CategoryEntity> categories;
 
     @OneToMany(mappedBy = "user")
-    private Set<PaymentMethodDao> paymentMethods;
+    private Set<PaymentMethodEntity> paymentMethods;
 
     @OneToMany(mappedBy = "user")
-    private Set<ExpenseDao> expenses;
+    private Set<ExpenseEntity> expenses;
 }

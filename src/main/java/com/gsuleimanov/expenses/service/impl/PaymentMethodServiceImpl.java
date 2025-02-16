@@ -1,7 +1,7 @@
 package com.gsuleimanov.expenses.service.impl;
 
 import com.gsuleimanov.expenses.converter.PaymentMethodConverter;
-import com.gsuleimanov.expenses.model.PaymentMethodDao;
+import com.gsuleimanov.expenses.model.PaymentMethodEntity;
 import com.gsuleimanov.expenses.model.PaymentMethod;
 import com.gsuleimanov.expenses.model.PaymentMethodRequest;
 import com.gsuleimanov.expenses.repository.PaymentMethodRepository;
@@ -26,7 +26,7 @@ public class PaymentMethodServiceImpl implements PaymentMethodService {
     @Transactional(readOnly = true)
     public List<PaymentMethod> findAllPaymentMethods() {
         // TODO: Implement user-specific payment methods when authentication is added
-        List<PaymentMethodDao> paymentMethods = paymentMethodRepository.findAll();
+        List<PaymentMethodEntity> paymentMethods = paymentMethodRepository.findAll();
         return paymentMethods.stream()
                 .map(paymentMethodConverter::toDto)
                 .collect(Collectors.toList());
@@ -39,7 +39,7 @@ public class PaymentMethodServiceImpl implements PaymentMethodService {
         var user = userRepository.findById(1L)
                 .orElseThrow(() -> new RuntimeException("Default user not found"));
 
-        var paymentMethod = PaymentMethodDao.builder()
+        var paymentMethod = PaymentMethodEntity.builder()
                 .name(paymentMethodRequest.getName())
                 .user(user)
                 .build();

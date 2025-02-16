@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.gsuleimanov.expenses.converter.UserConverter;
-import com.gsuleimanov.expenses.model.UserDao;
+import com.gsuleimanov.expenses.model.UserEntity;
 import com.gsuleimanov.expenses.exception.UserAlreadyExistsException;
 import com.gsuleimanov.expenses.model.User;
 import com.gsuleimanov.expenses.model.UserRegistrationRequest;
@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
 
         var encodedPassword = passwordEncoder.encode(request.getPassword());
 
-        var user = UserDao.builder()
+        var user = UserEntity.builder()
             .username(request.getUsername())
             .email(request.getEmail())
             .passwordHash(encodedPassword)
